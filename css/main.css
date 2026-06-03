@@ -1,0 +1,93 @@
+/* Reset 기본 스타일 제거 */
+body, h1, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* 전체 레이아웃 */
+body {
+    font-family: 'Arial', sans-serif;
+    color: white;
+    background: url('../images/main.webp') no-repeat center center/cover;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 헤더 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.6); /* 반투명 검정색 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px; /* 고정된 헤더 높이 */
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: #00acee; /* 토스 파란색 */
+}
+
+/* 메인 섹션 */
+.main-section {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 80px; /* 헤더 높이만큼 여백 추가 */
+}
+
+.main-content h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    line-height: 1.5;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* 푸터 */
+.footer {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.scroll-indicator {
+    font-size: 2rem;
+    animation: bounce 1.5s infinite;
+}
+
+/* 애니메이션 */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

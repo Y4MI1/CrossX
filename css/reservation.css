@@ -1,0 +1,929 @@
+
+
+.reservation-body {
+    position: relative;
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+.reservation-wrapper {
+    padding-top: 70px; /* navbar 높이만큼 */
+    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+
+/* 전역 스타일에 추가 */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+/* 예약 메인 페이지 스타일 유지 */
+.reservation-main {
+    padding: 80px 20px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.reservation-main h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #333;
+    font-size: 2rem;
+}
+
+/* 개선된 패키지 카드 그리드 */
+.package-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px;
+}
+
+/* 개선된 패키지 카드 스타일 */
+.package-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.package-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.package-image {
+    height: 60%;
+    position: relative;
+    overflow: hidden;
+}
+
+.package-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.package-card:hover .package-image img {
+    transform: scale(1.1);
+}
+
+.package-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.package-info {
+    height: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.95),
+        rgba(255, 255, 255, 1)
+    );
+}
+
+.package-info h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.package-details {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.package-details span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.package-details i {
+    color: #4e6fff;
+}
+
+.price {
+    margin-top: auto;
+    color: #4e6fff;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+}
+
+.price span {
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: normal;
+}
+
+/* 페이지 전환 애니메이션 */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+}
+
+.page-transition.active {
+    transform: translateX(0);
+}
+
+/* 예약 스텝 페이지 스타일 */
+.reservation-step {
+    padding: 80px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: slideInFromRight 0.5s ease-out forwards;
+}
+
+
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.step-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 인원 선택 버튼 스타일 */
+.people-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.people-btn {
+    padding: 15px 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background: white;
+    color: #333;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.people-btn:hover {
+    border-color: #4e6fff;
+    color: #4e6fff;
+}
+
+.people-btn.active {
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(78, 111, 255, 0.3);
+}
+
+/* 날짜 선택 스타일 */
+.date-selection {
+    margin-top: 30px;
+}
+
+.date-selection input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+.date-info {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    font-size: 0.95rem;
+}
+
+.date-info p {
+    color: #666;
+    margin: 5px 0;
+}
+
+.date-info span {
+    color: #333;
+    font-weight: 500;
+}
+
+.end-date {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid #e9ecef;
+}
+
+/* 층수 선택 스타일 */
+.floor-selection {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.floor-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.floor-btn {
+    width: 100%;
+    padding: 20px;
+    border: 2px solid #e0e0e0;
+    border-radius: 15px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.floor-btn:hover {
+    border-color: #4e6fff;
+    background-color: #f8f9fa;
+}
+
+.floor-btn.active {
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    border: none;
+    color: white;
+    box-shadow: 0 4px 15px rgba(78, 111, 255, 0.3);
+}
+
+.floor-btn-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.floor-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.floor-price {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 서비스 목록 스타일 */
+.services-container {
+    margin-top: 20px;
+}
+
+.service-list {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    animation: slideDown 0.3s ease-out;
+}
+
+.service-list h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.service-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.service-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    color: #666;
+}
+
+.service-list i {
+    color: #4e6fff;
+}
+
+.service-list#vipServices i {
+    color: #ffd700;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 가격 및 다음 버튼 */
+.price-next-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.total-price {
+    text-align: left;
+}
+
+.total-price span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.total-price h3 {
+    color: #4e6fff;
+    font-size: 1.8rem;
+    margin-top: 5px;
+}
+
+.next-btn {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(78, 111, 255, 0.3);
+}
+
+.next-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(78, 111, 255, 0.4);
+}
+
+.next-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* 예약 요약 섹션 */
+.reservation-summary {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item span {
+    color: #666;
+}
+
+.summary-item strong {
+    color: #333;
+    font-weight: 600;
+}
+
+/* 이메일 섹션 */
+.email-section {
+    margin: 30px 0;
+}
+
+.email-desc {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 10px 0;
+}
+
+.email-input-group {
+    margin-top: 15px;
+}
+
+.email-input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.email-input-group input:focus {
+    outline: none;
+    border-color: #4e6fff;
+    box-shadow: 0 0 0 3px rgba(78, 111, 255, 0.1);
+}
+
+/* 토스트 메시지 */
+.toast-message {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(150px);
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast-message.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* 모달 스타일 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 90%;
+    width: 400px;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-icon {
+    font-size: 2.5rem;
+    color: #4e6fff;
+    margin-bottom: 20px;
+}
+
+.modal-text {
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.modal-button {
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.modal-button:hover {
+    transform: translateY(-2px);
+}
+
+/* 층수 선택 스타일 업데이트 */
+.floor-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.floor-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.floor-btn:hover::before,
+.floor-btn.active::before {
+    opacity: 1;
+}
+
+.floor-btn.active {
+    background: linear-gradient(
+        to right,
+        rgba(78, 111, 255, 0.1),
+        transparent
+    );
+    border-color: #4e6fff;
+}
+
+.floor-price {
+    font-weight: 500;
+    color: #4e6fff;
+}
+
+/* 서비스 리스트 아이콘 스타일 */
+.service-list#standard-plusServices i {
+    color: #4CAF50;
+}
+
+/* reservation.css에 추가 */
+/* 규칙 페이지 컨테이너 */
+.rules-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 규칙 섹션 기본 스타일 */
+.rules-section {
+    margin-bottom: 20px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+/* 규칙 헤더 스타일 */
+.rules-header {
+    padding: 20px 25px;
+    background: #f8f9fa;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.rules-header:hover {
+    background-color: #f0f2f5;
+}
+
+.rules-header h2 {
+    font-size: 1.2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+.rules-header i.arrow {
+    font-size: 1rem;
+    color: #666;
+    transition: transform 0.3s ease;
+}
+
+.rules-section.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* 규칙 내용 스타일 */
+.rules-body {
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    background: white;
+}
+
+.rules-section.active .rules-body {
+    padding: 25px;
+    max-height: 2000px;
+}
+
+/* 리스트 스타일 */
+.rules-body ol {
+    padding-left: 30px;
+    margin: 0;
+    list-style-type: decimal;
+    text-align: left;
+}
+
+.rules-body li {
+    margin-bottom: 15px;
+    color: #666;
+    line-height: 1.6;
+    padding-left: 10px;
+    position: relative;
+}
+
+Copy.rules-body li strong {
+    display: block;
+    color: #333;
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+.rules-body li p {
+    color: #666;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.rules-body li {
+    margin-bottom: 20px;
+}
+
+.rules-body li:last-child {
+    margin-bottom: 0;
+}
+
+.rules-body li em {
+    display: block;
+    color: #888;
+    font-style: normal;
+    margin-top: 5px;
+    font-size: 0.95em;
+}
+
+/* 아이콘 색상 */
+.rules-header i.fa-ban {
+    color: #dc3545;
+}
+
+.rules-header i.fa-exclamation-triangle {
+    color: #ffc107;
+}
+
+.rules-header i.fa-clipboard-list {
+    color: #28a745;
+}
+
+/* 출처 정보 스타일 */
+.source-info {
+    text-align: right;
+    color: #666;
+    margin: 30px 0;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.source-info a {
+    color: #4e6fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.source-info a:hover {
+    text-decoration: underline;
+}
+
+/* 동의 체크박스 섹션 */
+.rules-agreement {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.agreement-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.agreement-checkbox input {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.agreement-checkbox span {
+    color: #333;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* 다음 단계 버튼 */
+.next-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-btn:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(78, 111, 255, 0.3);
+}
+
+.next-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .reservation-main,
+    .reservation-step {
+        padding-top: 80px;
+    }
+
+    .package-grid {
+        padding-bottom: 80px;
+    }
+
+    .step-content {
+        margin-bottom: 60px;
+    }
+
+    .price-next-container {
+        margin-top: 0;
+        background: white;
+    }
+
+    .total-price {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .next-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .reservation-main,
+    .reservation-step {
+        padding-top: 80px;
+    }
+
+    .package-grid {
+        padding-bottom: 80px;
+    }
+
+    .step-content {
+        margin-bottom: 60px;
+    }
+
+    .price-next-container {
+        margin-top: 0;
+        background: white;
+    }
+
+    .total-price {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+    .next-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+/* 반응형 스타일 */
+@media (max-width: 768px) {
+    .rules-content {
+        padding: 15px;
+    }
+
+    .rules-header {
+        padding: 15px 20px;
+    }
+    
+    .rules-header h2 {
+        font-size: 1.1rem;
+    }
+    
+    .rules-section.active .rules-body {
+        padding: 20px;
+    }
+    
+    .rules-body ol {
+        padding-left: 25px;
+    }
+    
+    .rules-body li {
+        padding-left: 5px;
+        font-size: 0.95rem;
+    }
+
+    .rules-agreement {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 전체 컨테이너 */
+    .container {
+        padding: 0;
+    }
+
+    /* 섹션 여백 */
+    section {
+        margin: 0;
+    }
+
+    /* 반응형 이미지 */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 텍스트 크기 조정 */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+
+    /* 버튼 크기 조정 */
+    button {
+        padding: 12px 20px;
+    }
+}

@@ -1,0 +1,214 @@
+<!-- about.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="css/mobile-common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소개 - Cross X</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo"><a href="index.html"><img src="images/logo.png" alt="로고"></a></div>
+        <!-- 사이드바 버튼을 상단 바의 오른쪽에 배치 -->
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleSideBar()">☰</div>
+        </div>
+    </header>
+
+    <!-- 사이드바 -->
+    <aside class="side-bar">
+        <div class="side-bar__icon-box" onclick="toggleSideBar()">
+            <div class="side-bar__icon-1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home"></i> 메인</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-ship"></i> 소개</a></li>
+            <li><a href="reservation.html"><i class="fa-solid fa-calendar-check"></i> 예약</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-comments"></i> 고객문의</a></li>
+            <li id="loginMenuItem"><a href="login.html"><i class="fa-solid fa-sign-in-alt"></i> 로그인</a></li>
+            <li id="userInfo" style="display: none;" class="user-profile">
+                <div class="user-info-container">
+                    <div class="user-info-left">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="username"></span>
+                    </div>
+                    <div class="user-info-right" onclick="logout()">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>로그아웃</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </aside>
+    <main class="about-main">
+        <!-- 페이지 선택 버튼 -->
+        <div class="page-selector">
+            <button class="selector-btn active" data-page="philosophy">
+                <i class="fas fa-lightbulb"></i>
+                <span>크루 소개</span>
+            </button>
+            <button class="selector-btn" data-page="mascot">
+                <i class="fas fa-star"></i>
+                <span>마스코트 소개</span>
+            </button>
+            <button class="selector-btn" data-page="floors">
+                <i class="fas fa-building"></i>
+                <span>층별 안내</span>
+            </button>
+        </div>
+
+        <!-- 콘텐츠 영역 -->
+        <div class="content-container">
+
+            <section id="philosophy" class="content-section active">
+                <h2>크루 소개</h2>
+                <div class="crew-grid">
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-고</span>
+                            <span class="crew-department">팀장 및 자료 제작</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-고</span>
+                            <span class="crew-department">자료 분석 및 자료 제작 보조</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-고</span>
+                            <span class="crew-department">크루즈 디자인 및 설계도 보조</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-고</span>
+                            <span class="crew-department">홈페이지 제작 및 서버 구축</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-고</span>
+                            <span class="crew-department">코스 제작 및 크루즈 구성</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-</span>
+                            <span class="crew-department">크루즈 설계도 제작</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-고</span>
+                            <span class="crew-department">아이콘 제작 및 발표</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+                    <div class="crew-card">
+                        <div class="crew-header">
+                            <h3>-</h3>
+                            <span class="crew-role">-고</span>
+                            <span class="crew-department">크루즈 설비 및 발표</span>
+                        </div>
+                        <div class="crew-content">
+                            <p>-</p>
+                        </div>
+                    </div>
+
+
+                </div>
+            </section>
+
+        <!-- 마스코트 소개 섹션 -->
+        <section id="mascot" class="content-section">
+            <h2>마스코트 소개</h2>
+            <div class="mascot-container">
+                <div class="mascot-image">
+                    <img src="images/mas.jpg" alt="마스코트">
+                </div>
+                <div class="mascot-info">
+                    <h3>바북이</h3>
+                    <p class="mascot-description">바다거북을 모티브로 제작한 Cross X의 마스코트입니다! 
+                        </p>
+                        <p class="mascot-description">
+                            "바다를 북돋우는 이로운 친구"라는 의미를 가지고 있습니다.
+                        </p>
+                        <p class="mascot-description">
+                            바북이와 함께, 환경의 소중함을 깨닫고 지속 가능한 여행을 떠나보세요!
+                        </p>
+                        <p class="mascot-description">
+                            바북이는 여러분들에게 바다의 중요성을 알리고, 환경을 지키기 위해 노력할 것입니다.
+                        </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 층별 안내 섹션 -->
+        <section id="floors" class="content-section">
+            <h2>층별 안내</h2>
+            <div class="floor-selector">
+                <!-- JavaScript로 자동 생성될 버튼들 -->
+            </div>
+            <div class="floor-content">
+                <div class="floor-image">
+                    <img id="floorImage" src="" alt="층 이미지">
+                </div>
+                <div class="floor-facilities">
+                    <ul id="facilityList"></ul>
+                </div>
+            </div>
+        </section>
+        </div>
+    </main>
+
+    <script src="js/about.js"></script>
+</body>
+</html>

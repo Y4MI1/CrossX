@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("36O0POgWrw2Amw2DV");
+        })();
+    </script>
+    <link rel="stylesheet" href="css/mobile-common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 완료 - Cross X</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/reservation.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo"><a href="index.html"><img src="images/logo.png" alt="로고"></a></div>
+        <!-- 사이드바 버튼을 상단 바의 오른쪽에 배치 -->
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleSideBar()">☰</div>
+        </div>
+    </header>
+
+    <!-- 사이드바 -->
+    <aside class="side-bar">
+        <div class="side-bar__icon-box" onclick="toggleSideBar()">
+            <div class="side-bar__icon-1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home"></i> 메인</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-ship"></i> 소개</a></li>
+            <li><a href="reservation.html"><i class="fa-solid fa-calendar-check"></i> 예약</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-comments"></i> 고객문의</a></li>
+            <li id="loginMenuItem"><a href="login.html"><i class="fa-solid fa-sign-in-alt"></i> 로그인</a></li>
+            <li id="userInfo" style="display: none;" class="user-profile">
+                <div class="user-info-container">
+                    <div class="user-info-left">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="username"></span>
+                    </div>
+                    <div class="user-info-right" onclick="logout()">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>로그아웃</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </aside>
+
+    <main class="reservation-step">
+        <div class="step-content">
+            <h1>예약 확인</h1>
+            
+            <div class="reservation-summary">
+                <h2>예약 정보</h2>
+                <div class="summary-item">
+                    <span>패키지:</span>
+                    <strong id="packageName"></strong>
+                </div>
+                <div class="summary-item">
+                    <span>여행 기간:</span>
+                    <strong id="travelDates"></strong>
+                </div>
+                <div class="summary-item">
+                    <span>인원:</span>
+                    <strong id="peopleCount"></strong>
+                </div>
+                <div class="summary-item">
+                    <span>객실 등급:</span>
+                    <strong id="floorType"></strong>
+                </div>
+                <div class="summary-item">
+                    <span>총 금액:</span>
+                    <strong id="totalPrice"></strong>
+                </div>
+            </div>
+
+            <div class="email-section">
+                <h2>이메일 주소</h2>
+                <p class="email-desc">예약 확인서가 이메일로 전송됩니다.</p>
+                <div class="email-input-group">
+                    <input type="email" id="emailInput" placeholder="example@email.com" required>
+                </div>
+            </div>
+
+            <div class="price-next-container">
+                <div class="total-price">
+                    <span>최종 결제 금액</span>
+                    <h3 id="finalPrice"></h3>
+                </div>
+                <button class="next-btn" onclick="completeReservation()">예약 완료</button>
+            </div>
+
+            <div class="mobile-bottom-spacer" style="height: 100px; width: 100%; background-color: transparent;"></div>
+        </div>
+    </main>
+
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="modal-text"></div>
+            <button class="modal-button">확인</button>
+        </div>
+    </div>
+
+    <!-- 토스트 메시지 -->
+    <div id="toast" class="toast-message"></div>
+
+    <script src="js/script.js"></script>
+    <script src="js/reservation.js"></script>
+</body>
+</html>

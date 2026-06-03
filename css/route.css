@@ -1,0 +1,341 @@
+/* 모든 페이지의 기본 모바일 레이아웃 */
+@media (max-width: 768px) {
+    body {
+        width: 100vw;
+        max-width: 100%;
+        overflow-x: hidden;
+        position: fixed; /* 고정 포지셔닝 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+        overflow-y: auto; /* 세로 스크롤 허용 */
+        -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
+    }
+
+    /* 상단바와 겹침 방지 */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    /* 메인 컨텐츠 상단 여백 조정 */
+    main {
+        padding-top: 60px; /* 상단바 높이만큼 패딩 추가 */
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+/* route.css */
+.route-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 20px 40px; /* 상단 navbar 높이 고려 */
+    min-height: calc(100vh - 60px); /* footer가 있다면 고려 */
+}
+
+.route-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+    padding-top: 20px; /* 상단 여백 추가 */
+}
+
+.route-timeline {
+    position: relative;
+    padding: 20px 0;
+}
+
+/* 중앙 라인 */
+.route-timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #4e6fff 0%, #6f42c1 100%);
+    border-radius: 2px;
+}
+
+.route-city {
+    position: relative;
+    margin: 30px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.city-block {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    width: 280px;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.city-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.city-name {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.city-details {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0;
+}
+
+.city-block.active .city-details {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.city-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.city-duration {
+    color: #4e6fff;
+    font-weight: 500;
+    text-align: right;
+}
+
+/* 출발지/도착지 특별 스타일 */
+.route-city.major .city-block {
+    width: 320px;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+}
+
+.route-city.major .city-name {
+    color: white;
+}
+
+.route-city.major .city-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.route-city.major .city-duration {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* 총 소요 시간 섹션 */
+.total-duration {
+    text-align: center;
+    margin: 50px 0 30px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 20px;
+}
+
+.total-duration h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.total-duration p {
+    color: #4e6fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* 다음 단계 버튼 */
+.next-step {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px; /* 하단 여백 추가 */
+}
+
+.next-btn {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.next-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(78, 111, 255, 0.3);
+}
+
+/* 페이지 전환 애니메이션 */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    transform: translateX(100%);
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+}
+
+.page-transition.active {
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .route-container {
+        padding: 60px 15px 30px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .route-timeline {
+        position: relative;
+        padding: 20px 0;
+    }
+
+    /* 중앙 라인 가운데 정렬 */
+    .route-timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 3px;
+    }
+
+    .route-city {
+        position: relative;
+        margin: 30px 0;
+        width: 100%;
+        align-items: center; /* 수평 중앙 정렬 */
+    }
+
+    .city-block {
+        width: calc(100% - 100px);
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .route-city.major .city-block {
+        width: calc(100% - 100px);
+        max-width: 360px;
+    }
+
+    .city-name {
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    .city-description {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .total-duration {
+        padding: 20px;
+        margin: 30px 0 20px;
+    }
+
+    .total-duration h3 {
+        font-size: 1rem;
+    }
+
+    .total-duration p {
+        font-size: 1rem;
+    }
+
+    .next-btn {
+        width: 90%;
+        max-width: 300px;
+        padding: 12px 30px;
+        font-size: 0.9rem;
+    }
+
+    .side-bar.open + .route-container {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .route-container {
+        padding: 50px 5px 20px;
+    }
+
+    .city-block {
+        width: calc(100% - 60px);
+        max-width: 280px;
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .route-city.major .city-block {
+        width: calc(100% - 60px);
+        max-width: 320px;
+    }
+
+    .city-name {
+        font-size: 1.1rem;
+    }
+
+    .city-description {
+        font-size: 0.85rem;
+    }
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+}

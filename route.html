@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="css/mobile-common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>여행 코스 - Cross X</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/route.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <a href="index.html"><img src="images/logo.png" alt="로고"></a>
+        </div>
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleSideBar()">☰</div>
+        </div>
+    </header>
+
+    <!-- 사이드바 -->
+    <aside class="side-bar">
+        <div class="side-bar__icon-box" onclick="toggleSideBar()">
+            <div class="side-bar__icon-1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home"></i> 메인</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-ship"></i> 소개</a></li>
+            <li><a href="reservation.html"><i class="fa-solid fa-calendar-check"></i> 예약</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-comments"></i> 고객문의</a></li>
+            <li id="loginMenuItem"><a href="login.html"><i class="fa-solid fa-sign-in-alt"></i> 로그인</a></li>
+            <li id="userInfo" style="display: none;" class="user-profile">
+                <div class="user-info-container">
+                    <div class="user-info-left">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="username"></span>
+                    </div>
+                    <div class="user-info-right" onclick="logout()">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>로그아웃</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </aside>   
+
+    <main class="route-container">
+        <div class="route-title">
+            <h1>여행 코스 안내</h1>
+            <!-- 패키지명에 따라 동적으로 제목이 변경됩니다 -->
+        </div>
+
+        <div class="route-timeline">
+            <!-- 여기에 도시 정보가 동적으로 추가됩니다 -->
+        </div>
+
+        <div class="total-duration">
+            <h3>총 소요 기간</h3>
+            <p><!-- 동적으로 일수가 입력됩니다 --></p>
+        </div>
+
+        <div class="next-step">
+            <button class="next-btn" onclick="proceedToNextStep()">다음 단계로</button>
+        </div>
+
+        <div class="mobile-bottom-spacer" style="height: 100px; width: 100%; background-color: transparent;"></div>
+    </main>
+
+    
+
+    <script src="js/script.js"></script>
+    <script src="js/route.js"></script>
+</body>
+</html>

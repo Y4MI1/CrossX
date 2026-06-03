@@ -1,0 +1,407 @@
+
+/* 모든 페이지의 기본 모바일 레이아웃 */
+@media (max-width: 768px) {
+    body {
+        width: 100vw;
+        max-width: 100%;
+        overflow-x: hidden;
+        position: fixed; /* 고정 포지셔닝 */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .container {
+        width: 100%;
+        height: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+        overflow-y: auto; /* 세로 스크롤 허용 */
+        -webkit-overflow-scrolling: touch; /* 모바일 부드러운 스크롤 */
+    }
+
+    /* 상단바와 겹침 방지 */
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    /* 메인 컨텐츠 상단 여백 조정 */
+    main {
+        padding-top: 60px; /* 상단바 높이만큼 패딩 추가 */
+        height: 100%;
+        overflow-y: auto;
+    }
+}
+
+.signup-link {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+}
+
+.signup-link a {
+    color: #4e6fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* contact.css 생성 필요 */
+.contact-main {
+    padding: 100px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-container {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.contact-container .input-group {
+    margin-bottom: 20px;
+}
+
+.contact-container input,
+.contact-container select,
+.contact-container textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.contact-container textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(78, 111, 255, 0.3);
+}
+
+/* 전역 스타일에 추가 */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* 추가로 모바일 최적화를 위한 전역 설정 */
+@media (max-width: 768px) {
+    body {
+        width: 100vw;
+        overflow-x: hidden;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+        margin: 0 auto;
+    }
+}
+
+
+/* box-sizing을 확실하게 설정 */
+* {
+    box-sizing: border-box;
+}
+
+/* 로그인 페이지 메인 배경 */
+.login-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 70px);
+    padding-top: 70px;
+    background: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+}
+
+/* 로그인 컨테이너 */
+.login-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+/* 로그인 박스 */
+.login-box {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 48px 40px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(8px);
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+    color: #333;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 입력 필드 */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    border: 1px solid rgba(78, 84, 200, 0.1);
+    border-radius: 12px;
+    background-color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #4e54c8;
+    box-shadow: 0 0 0 2px rgba(78, 84, 200, 0.1);
+}
+
+.input-group input::placeholder {
+    color: #999;
+}
+
+/* 로그인 버튼 */
+.login-btn {
+    width: 100%;
+    height: 44px;
+    padding: 0;
+    background: linear-gradient(135deg, #4e6fff 0%, #6f42c1 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(78, 111, 255, 0.3);
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #3955db 0%, #5e37a6 100%);
+    box-shadow: 0 6px 20px rgba(78, 111, 255, 0.4);
+    transform: translateY(-1px);
+}
+
+.login-btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 8px rgba(78, 111, 255, 0.2);
+}
+
+/* 반응형 대응 */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 15px;
+    }
+    
+    .login-box {
+        padding: 40px 30px;
+    }
+}
+
+/* 입력 필드 자동완성 스타일 제거 */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* 사용자 프로필 스타일 개선 */
+.user-profile {
+    padding: 15px 30px !important;
+}
+
+.user-info-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.user-info-left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 15px;
+    color: white;
+}
+
+.user-info-left i {
+    color: #007bff;
+    font-size: 1.1rem;
+}
+
+#username {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.user-info-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 15px;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease;
+}
+
+.user-info-right:hover {
+    background-color: rgba(220, 53, 69, 0.2);
+}
+
+.user-info-right i {
+    color: #dc3545;
+    font-size: 0.9rem;
+}
+
+.user-info-right span {
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+/* hover 효과 개선 */
+.user-info-container:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 토스트 메시지 스타일 */
+.toast-message {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(150px);
+    background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast-message.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .toast-message {
+        width: 90%;
+        max-width: 320px;
+        text-align: center;
+        font-size: 13px;
+        bottom: 20px;
+    }
+}
+
+/* 반응형 대응 */
+@media (max-width: 768px) {
+    .user-profile {
+        padding: 10px 20px !important;
+    }
+    
+    .user-info-container {
+        height: 45px;
+    }
+    
+    .user-info-left {
+        padding: 0 12px;
+    }
+    
+    .user-info-right {
+        padding: 0 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 15px;
+    }
+    
+    .login-box {
+        padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 전체 컨테이너 */
+    .container {
+        padding: 0;
+    }
+
+    /* 섹션 여백 */
+    section {
+        margin: 0;
+    }
+
+    /* 반응형 이미지 */
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* 텍스트 크기 조정 */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+
+    /* 버튼 크기 조정 */
+    button {
+        padding: 12px 20px;
+    }
+}

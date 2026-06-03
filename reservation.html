@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="css/mobile-common.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 - Cross X</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/reservation.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <header class="navbar">
+        <div class="logo"><a href="index.html"><img src="images/logo.png" alt="로고"></a></div>
+        <div class="menu-container">
+            <div class="menu-icon" onclick="toggleSideBar()">☰</div>
+        </div>
+    </header>
+    
+    <!-- 사이드바 -->
+    <aside class="side-bar">
+        <div class="side-bar__icon-box" onclick="toggleSideBar()">
+            <div class="side-bar__icon-1">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <ul>
+            <li><a href="index.html"><i class="fa-solid fa-home"></i> 메인</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-ship"></i> 소개</a></li>
+            <li><a href="reservation.html"><i class="fa-solid fa-calendar-check"></i> 예약</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-comments"></i> 고객문의</a></li>
+            <li id="loginMenuItem"><a href="login.html"><i class="fa-solid fa-sign-in-alt"></i> 로그인</a></li>
+            <li id="userInfo" style="display: none;" class="user-profile">
+                <div class="user-info-container">
+                    <div class="user-info-left">
+                        <i class="fa-solid fa-user"></i>
+                        <span id="username"></span>
+                    </div>
+                    <div class="user-info-right" onclick="logout()">
+                        <i class="fa-solid fa-sign-out-alt"></i>
+                        <span>로그아웃</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- 메인 컨텐츠 -->
+    <main class="reservation-main">
+        <h1>패키지 예약</h1>
+        <div class="package-grid">
+
+            <div class="package-card" onclick="goToReservation('프랑스-영국 메인 크루즈', 2500000, 12)">
+                <div class="package-image">
+                    <img src="images/package1.jpg" alt="프랑스-영국 메인 크루즈">
+                    <div class="package-badge">인기</div>
+                </div>
+                <div class="package-info">
+                    <h3>프랑스-영국 메인 크루즈</h3>
+                    <div class="package-details">
+                        <span class="duration">
+                            <i class="fas fa-clock"></i> 12일
+                        </span>
+                        <span class="location">
+                            <i class="fas fa-map-marker-alt"></i> 프랑스-영국
+                        </span>
+                    </div>
+                    <p class="price">₩2,500,000 ~ <span>/ 1 person</span></p>
+                </div>
+            </div>
+        
+            <div class="package-card" onclick="goToReservation('프랑스-영국 클래식 크루즈', 2100000, 10)">
+                <div class="package-image">
+                    <img src="images/package2.jpg" alt="프랑스-영국 클래식 크루즈">
+                </div>
+                <div class="package-info">
+                    <h3>프랑스-영국 클래식 크루즈</h3>
+                    <div class="package-details">
+                        <span class="duration">
+                            <i class="fas fa-clock"></i> 10일
+                        </span>
+                        <span class="location">
+                            <i class="fas fa-map-marker-alt"></i> 프랑스-영국
+                        </span>
+                    </div>
+                    <p class="price">₩2,100,000 ~ <span>/ 1 person</span></p>
+                </div>
+            </div>
+
+            <div class="package-card" onclick="goToReservation('지중해-영국 크루즈', 2300000, 10)">
+                <div class="package-image">
+                    <img src="images/package3.png" alt="지중해-영국 크루즈">
+                </div>
+                <div class="package-info">
+                    <h3>지중해-영국 크루즈</h3>
+                    <div class="package-details">
+                        <span class="duration">
+                            <i class="fas fa-clock"></i> 10일
+                        </span>
+                        <span class="location">
+                            <i class="fas fa-map-marker-alt"></i> 프랑스-영국
+                        </span>
+                    </div>
+                    <p class="price">₩2,300,000 ~ <span>/ 1 person</span></p>
+                </div>
+            </div>
+
+            <div class="mobile-bottom-spacer" style="height: 100px; width: 100%; background-color: transparent;"></div>
+                    
+
+        </div>
+    </main>
+
+<script src="js/script.js"></script>
+<script src="js/reservation.js"></script>
+
+</body>
+</html>
