@@ -155,7 +155,7 @@ function completeReservation() {
     };
 
     // 이메일 전송
-    emailjs.send('service_pth587o', 'template_i0vn5r8', templateParams)
+    emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, templateParams)
         .then(function(response) {
             showModal('예약이 완료되었습니다! 예약 확인 메일이 발송되었습니다.', () => {
                 setTimeout(() => {
